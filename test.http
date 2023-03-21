@@ -1,0 +1,57 @@
+@westEuropeEventHubConnectionString = ""
+@eastUSEventHubConnectionString=""
+
+# Using the old SDK - azure-event-hubs ^0.2.1
+### East US
+POST http://localhost:7071/api/MyHttpTrigger
+Content-Type: application/json
+
+{
+  "teamTableNumber": "foo-table-1",
+  "eventHubConnectionString": {{eastUSEventHubConnectionString}},
+  "eventHubName": "orders"
+}
+
+
+### West Europe
+POST http://localhost:7071/api/MyHttpTrigger
+Content-Type: application/json
+
+{
+  "teamTableNumber": "foo-table-1",
+  "eventHubConnectionString": {{westEuropeEventHubConnectionString}},
+  "eventHubName": "orders"
+}
+
+
+### West Europe Secondary
+POST http://localhost:7071/api/MyHttpTrigger
+Content-Type: application/json
+
+{
+  "teamTableNumber": "foo-table-1",
+  "eventHubConnectionString": "",
+  "eventHubName": "orders"
+}
+
+
+### ----- NEW SDK (@azure/event-hubs ^5.9.0) -----
+### West Europe
+post http://localhost:7071/api/NewSDKHttpTrigger
+Content-Type: application/json
+
+{
+  "teamTableNumber": "foo-table-1",
+  "eventHubConnectionString": {{westEuropeEventHubConnectionString}},
+  "eventHubName": "orders"
+}
+
+### East US
+post http://localhost:7071/api/NewSDKHttpTrigger
+Content-Type: application/json
+
+{
+  "teamTableNumber": "foo-table-1",
+  "eventHubConnectionString": {{eastUSEventHubConnectionString}},
+  "eventHubName": "orders"
+}
