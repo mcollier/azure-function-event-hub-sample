@@ -16,6 +16,7 @@ module.exports = (context, req) => {
     eventHubClient.getHubRuntimeInformation()
         .then((res) => {
             context.log('all good');
+            context.done();
         }).catch((error) => {
             context.log.error(error);
 

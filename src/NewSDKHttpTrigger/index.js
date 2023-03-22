@@ -15,6 +15,7 @@ module.exports = (context, req) => {
     producerClient.getEventHubProperties()
         .then((res) => {
             context.log('all good');
+            context.done();
         }).catch((error) => {
             context.log.error(error);
 
