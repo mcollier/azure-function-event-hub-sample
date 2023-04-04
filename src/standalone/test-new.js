@@ -1,24 +1,26 @@
-const { EventHubProducerClient, EventHubConsumerClient } = require("@azure/event-hubs");
+const { EventHubProducerClient } = require("@azure/event-hubs");
 
-// East US
-const eventHubConnectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
+// Load the .env file if it exists
+require("dotenv").config();
 
-// West Europe
-// const eventHubConnectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
-
-const eventHubName = "orders";
+// Define connection string and related Event Hubs entity name here
+const eventHubConnectionString = process.env["EVENTHUB_CONNECTION_STRING"] || "";
+const eventHubName = process.env["EVENTHUB_NAME"] || "";
 
 async function main() {
+    // console.log(eventHubConnectionString);
+    // console.log(eventHubName);
+
     const producerClient = new EventHubProducerClient(eventHubConnectionString, eventHubName);
 
-    producerClient.getEventHubProperties()
+    await producerClient.getEventHubProperties()
         .then((res) => {
             console.log("All good!");
         }).catch((error) => {
             console.log.error(error);
         })
 
-    producerClient.close();
+    await producerClient.close();
 
     console.log("Done!");
 }

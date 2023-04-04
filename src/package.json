@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "@azure/event-hubs": "^5.9.0",
-    "azure-event-hubs": "^0.2.1"
+    "azure-event-hubs": "^0.2.1",
+    "dotenv": "latest"
   },
   "devDependencies": {}
 }
